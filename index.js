@@ -1,6 +1,13 @@
 const fs = require('fs');
 
-let fileBuffer = fs.readFileSync('myfile.txt');
-let fileString = fileBuffer.toString();
+let fileName = 'myfile.txt';
 
-console.log(fileString);
+if(fs.existsSync(fileName)){
+    let fileBuffer = fs.readFileSync(fileName);
+    let fileString = fileBuffer.toString();
+
+    console.log(fileString);
+}
+else{
+    console.log(fileName + " not found");
+}
