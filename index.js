@@ -10,4 +10,7 @@ if(fs.existsSync(fileName)){
 }
 else{
     console.log(fileName + " not found");
+
+    fs.writeFileSync(fileName, "We are the knights who say NI!");
+    console.log(fileName + " created!");
 }
