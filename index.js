@@ -14,3 +14,5 @@ else{
     fs.writeFileSync(fileName, "We are the knights who say NI!");
     console.log(fileName + " created!");
 }
+
+fs.appendFileSync(fileName, "\nNo! not the knights who say NI!")
