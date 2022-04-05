@@ -13,17 +13,46 @@ router.use((req, res, next)=>{
 });
 
 router.get('/', (req, res)=>{
+    /**
+     * TODO:
+     * return average per movie instead of list of all reviews, 
+     * follow this format:
+     * {
+     *    "movie": "Life of Brian",
+     *    "rating": 4.9
+     * }
+     */
     res.send(req.reviews);
 });
 
 router.get('/:movietitle', (req, res) => {
+    /**
+     * TODO:
+     * return average instead list of reviews, 
+     * follow this format:
+     * {
+     *    "movie": "Life of Brian",
+     *    "rating": 4.9
+     * }
+     */
     res.send(req.reviews.filter(r=>r.movie == req.params.movietitle));
 });
 
 router.post('/', (req, res) => {
+    /**
+     * TODO: 
+     * set an "id" field before saving data
+     */
     req.reviews.push(req.body);
     fs.writeFileSync(myfile, JSON.stringify(req.reviews));
     res.send(req.body);
+});
+
+router.delete('/:id', (req, res) => {
+    /**
+     * TODO:
+     * implement a way to delete reviews
+     */
 });
 
 module.exports = router;
