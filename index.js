@@ -16,5 +16,3 @@ else{
 }
 
 fs.appendFileSync(fileName, "\nNo! not the knights who say NI!");
-
-
