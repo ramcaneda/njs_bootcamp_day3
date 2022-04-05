@@ -1,18 +1,26 @@
-const fs = require('fs');
+const fs_sync = require("fs");
+const fs = require("fs/promises");
 
-let fileName = 'myfile.txt';
+let fileName = "myfile.txt";
 
-if(fs.existsSync(fileName)){
-    let fileBuffer = fs.readFileSync(fileName);
+async function fileExists(fileName) {
+    return new Promise((resolve, reject)=>{
+        resolve(fs_sync.existsSync(fileName));
+    });
+}
+
+(async () => {
+  if (await fileExists(fileName)) {
+    let fileBuffer = await fs.readFile(fileName);
     let fileString = fileBuffer.toString();
 
     console.log(fileString);
-}
-else{
+  } else {
     console.log(fileName + " not found");
 
-    fs.writeFileSync(fileName, "We are the knights who say NI!");
+    await fs.writeFile(fileName, "We are the knights who say NI!");
     console.log(fileName + " created!");
-}
+  }
 
-fs.appendFileSync(fileName, "\nNo! not the knights who say NI!");
+  await fs.appendFile(fileName, "\nNo! not the knights who say NI!");
+})();
