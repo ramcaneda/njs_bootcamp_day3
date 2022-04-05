@@ -1,18 +1,13 @@
-const fs = require('fs');
+const express = require('express');
+const bodyParser = require('body-parser');
 
-let fileName = 'myfile.txt';
+const app = express();
+const port = 1337;
 
-if(fs.existsSync(fileName)){
-    let fileBuffer = fs.readFileSync(fileName);
-    let fileString = fileBuffer.toString();
+app.use(bodyParser.text());
 
-    console.log(fileString);
-}
-else{
-    console.log(fileName + " not found");
+app.use('/myfile', require('./myfile_apis'));
 
-    fs.writeFileSync(fileName, "We are the knights who say NI!");
-    console.log(fileName + " created!");
-}
-
-fs.appendFileSync(fileName, "\nNo! not the knights who say NI!");
+app.listen(port, ()=>{
+    console.log(`App listening on port http://localhost:${port}`);
+});
