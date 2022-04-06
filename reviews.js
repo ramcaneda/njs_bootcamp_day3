@@ -51,7 +51,7 @@ router.post('/', (req, res) => {
 router.delete('/:id', (req, res) => {
     /**
      * TODO:
-     * implement a way to delete reviews
+     * implement a way to delete reviews identified by id
      */
     throw new Error('not implemented');
 });
