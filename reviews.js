@@ -53,6 +53,7 @@ router.delete('/:id', (req, res) => {
      * TODO:
      * implement a way to delete reviews
      */
+    throw new Error('not implemented');
 });
 
 module.exports = router;
