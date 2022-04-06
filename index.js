@@ -15,3 +15,5 @@ app.use('/moviereviews', require('./reviews'));
 app.listen(port, ()=>{
     console.log(`App listening on port http://localhost:${port}`);
 });
+
+module.exports =  app;
